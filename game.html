@@ -57,7 +57,7 @@
             questionsArea.innerHTML = "<p>Loading questions...</p>";
 
             try {
-                const response = await fetch('https://quiz-n8n.onrender.com:5678/webhook/start-quiz', {
+                const response = await fetch('https://quiz-n8n.onrender.com/webhook/start-quiz', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ user_id: userId, book_name: bookName })
