@@ -1,7 +1,6 @@
 // FIRST LINE ALWAYS
 import { WEBHOOK_URL } from "./config.js";
 
-
 // 1️⃣ List of books
 const books = [
     "Beste mevrouw Eva",
@@ -13,12 +12,10 @@ const books = [
     "Man maakt stuk",
 ];
 
-
 // 2️⃣ Get elements
 const select = document.getElementById("book-select");
 const startBtn = document.getElementById("start-quiz-btn");
 const questionsArea = document.getElementById("questions-area");
-
 
 // 3️⃣ Populate dropdown
 books.forEach(book => {
@@ -27,7 +24,6 @@ books.forEach(book => {
     opt.innerText = book;
     select.appendChild(opt);
 });
-
 
 // 4️⃣ Handle quiz start
 startBtn.addEventListener("click", async () => {
@@ -41,16 +37,12 @@ startBtn.addEventListener("click", async () => {
         const response = await fetch(WEBHOOK_URL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                user_id: userId,
-                book_name: bookName
-            })
+            body: JSON.stringify({ user_id: userId, book_name: bookName })
         });
 
         const data = await response.json();
         const questions = data.questions || [];
 
-        // No questions
         if (questions.length === 0) {
             questionsArea.innerHTML = "<p>Geen vragen gevonden voor dit boek.</p>";
             return;
@@ -75,7 +67,6 @@ startBtn.addEventListener("click", async () => {
                 btn.innerText = option;
 
                 btn.addEventListener("click", () => {
-
                     // disable all buttons after first click
                     const buttons = div.querySelectorAll("button");
                     buttons.forEach(b => b.disabled = true);
@@ -84,8 +75,7 @@ startBtn.addEventListener("click", async () => {
                         btn.style.backgroundColor = "lightgreen";
                     } else {
                         btn.style.backgroundColor = "salmon";
-
-                        // show correct one
+                        // show correct answer
                         buttons[q.answer].style.backgroundColor = "lightgreen";
                     }
                 });
@@ -98,7 +88,6 @@ startBtn.addEventListener("click", async () => {
 
     } catch (err) {
         console.error(err);
-        questionsArea.innerHTML =
-            "<p>Er is iets misgegaan bij het ophalen van de vragen.</p>";
+        questionsArea.innerHTML = "<p>Er is iets misgegaan bij het ophalen van de vragen.</p>";
     }
 });
