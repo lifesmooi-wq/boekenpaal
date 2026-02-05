@@ -1,3 +1,14 @@
+<?php
+session_start();
+require "config.php";
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$username = $_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +23,11 @@
     <div class="container">
         <div id="home" class="flex-center flex-column">
             <h1>Boekenpaal</h1>
-            <a class="btn"  href="login.php">Login to Account</a>
-            <a class="btn"  href="nfc.html">Login with NFC pass</a>
-            <a class="btn"  href="info.html">Program information</a>
+            <a class="btn"  href="game.html">Play</a>
+            <a class="btn"  href="shop.html">Shop</a>
+            <a class="btn"  href="account.php">Account</a>
+            <a class="btn"  href="logout.php">Logout</a>
+
         </div>
     </div>
 <head>

@@ -5,7 +5,7 @@
 
 *{
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
     color: #333;
@@ -42,12 +42,12 @@ h3 {
 
 img{
     width: 250px;
-    height: 50px;
+    height: 250px;
 }
 
 img{
-    width: 250px;
-    height: 250px;
+    width: 100px;
+    height: 100px;
 }
 
 .container {
@@ -86,4 +86,30 @@ img{
     display: none;
 }
 
+/* BUTTONS */
 
+.btn {
+    font-size: 1.3rem;
+    padding: 1rem 0;
+    width: 20rem;
+    text-align: center;
+    border: 0.1rem solid #56a5eb;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: #56a5eb;
+    background-color: white;
+    border-radius: 99em;
+}
+
+.btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 186, 235, 0.5);
+    transform: translate(-0.1rem);
+    transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
